@@ -8,7 +8,7 @@
 @csrf
 
 <label>Add task</label>
-<input type="text" name="input-text"/>
+<input type="text" name="name"/>
 <button type="submit">Save the task</button>
 <a href="{{route('tasks.index')}}">Return to index</a>
 

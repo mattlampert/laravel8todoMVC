@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -25,9 +26,10 @@ public function __construct() {
     }
 
 
-    public function show()
+    public function show($task)
     {
-        return view("task.show")->with("tasks", $this->tasks);
+$task = Task::find($task);
+        return view("task.show")->with("task", $task);
     }
 
 public function create()
@@ -36,7 +38,14 @@ public function create()
     }
 public function store(Request $request)
     {
-        dd($request->all());
+        $task = Task::create($request->all());
+        return view("task.show")->with("task", $task);
 
+    }
+
+    public function destroy($task){
+        $task= Task::find($task);
+        $task->delete();
+        return redirect(route('tasks.index'));
     }
 }

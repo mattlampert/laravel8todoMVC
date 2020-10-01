@@ -1,5 +1,5 @@
+<h1>Detail of task #{{ $task['id'] }}</h1>
 
-@foreach($tasks as $task)
-<h1> {{$task['id']}}</h1>
-<p><b></b></p>
-@endforeach
+<p><b>Name : </b>{{ $task['name'] }}</h1>
+
+<p><a href="{{ route('tasks.index') }}">Back to list</a></p>
