@@ -27,6 +27,16 @@ public function __construct() {
 
     public function show()
     {
-        return view("task.show")->with("tasks", $this->tasks);;
+        return view("task.show")->with("tasks", $this->tasks);
+    }
+
+public function create()
+    {
+        return view("task.create");
+    }
+public function store(Request $request)
+    {
+        dd($request->all());
+
     }
 }
