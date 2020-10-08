@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Http\Requests\TaskStoreRequest;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -22,7 +23,8 @@ public function __construct() {
 
  public function index()
     {
-        return view("task.index")->with("tasks", $this->tasks);
+        $tasks = Task::all();
+        return view("task.index")->with("tasks", $tasks);
     }
 
 
@@ -36,7 +38,8 @@ public function create()
     {
         return view("task.create");
     }
-public function store(Request $request)
+
+    public function store(TaskStoreRequest $request)
     {
         $task = Task::create($request->all());
         return view("task.show")->with("task", $task);
